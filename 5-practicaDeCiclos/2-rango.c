@@ -6,6 +6,7 @@ int main(int argc, char const *argv[])
   scanf("%d %d",&M, &N);
 
   for (; M <= N; M++)
+  
     printf("%d ",M);
   
   return 0;
