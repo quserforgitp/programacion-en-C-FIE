@@ -4,7 +4,7 @@ int main(int argc, char const *argv[])
 {
 
   int m,n,numeroTriangulosDistintos,ladoA,ladoB,ladoC,
-      p,q; // p -> impar, q -> par
+      p,q, sumaImpar, sumaPar; // p -> impar, q -> par
   float combinacionesPosibles;
 
   // recibiendo intervalo cerrado de 'm' a 'n'
@@ -27,9 +27,13 @@ int main(int argc, char const *argv[])
     {
       printf("numero par: ");
       q++;
+      sumaPar = ladoA + ladoB + ladoC;
+      printf("suma par = %d\n", sumaPar);
     } else {
       printf("numero impar: ");
       p++;
+      sumaImpar = ladoA + ladoB + ladoC;
+      printf("suma impar = %d\n", sumaImpar);
     }
     
     //pintando en consola el numero compuesto de 3 cifras
