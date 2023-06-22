@@ -63,6 +63,24 @@ meterElSiete( char matrizCuadrada[FILAS][COLUMNAS],
 }
 
 void
+meterElOcho ( char matrizCuadrada[FILAS][COLUMNAS],
+            int *espOcupados, char caracter )
+{
+  for (size_t i = 0; i < FILAS; i++)
+    for (size_t j = (*espOcupados); j < (*espOcupados) + 4; j++)
+    {
+      if (i%2 == 0) matrizCuadrada[i][j] = caracter; // 1,3,5 filas
+      else // 2,4 filas
+      {
+        if (j == (*espOcupados) || j == (*espOcupados) + 2) matrizCuadrada[i][j] = caracter;// 1,3 columnas
+        else matrizCuadrada[i][j] = ' '; // 2,4 columnas
+      }
+      if (j == (*espOcupados) + 3) matrizCuadrada[i][j] = ' '; // siempre en la 4 columna
+    }
+    (*espOcupados) += 4;
+}
+
+void
 pedirCaracter ( char *caracter )
 {
   scanf("%c", caracter);
@@ -89,34 +107,13 @@ main ()
     }
   }
 
-  /* METEMOS 8 */
-  for (size_t i = 0; i < FILAS; i++)
-    for (size_t j = espOcupados; j < espOcupados + 4; j++)
-    {
-      if (i%2 == 0) matrizCuadrada[i][j] = '8';
-      else 
-      {
-        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '8';
-        else matrizCuadrada[i][j] = ' ';
-      }
-      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
-    }
-    espOcupados += 4;  espOcupados += 4;
 
-    /* OTRO 8 */
-  for (size_t i = 0; i < FILAS; i++)
-    for (size_t j = espOcupados; j < espOcupados + 4; j++)
-    {
-      if (i%2 == 0) matrizCuadrada[i][j] = '8';
-      else
-      {
-        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '8';
-        else matrizCuadrada[i][j] = ' ';
-      }
-      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
-    }
-    espOcupados += 4;
-  
+  meterElOcho(matrizCuadrada,&espOcupados,'#');
+  meterElOcho(matrizCuadrada,&espOcupados,'+');
+  meterElOcho(matrizCuadrada,&espOcupados,'=');
+  meterElOcho(matrizCuadrada,&espOcupados,'@');
+  meterElOcho(matrizCuadrada,&espOcupados,'%');
+
   imprimirMatriz( matrizCuadrada,espOcupados );
   
   return EXIT_SUCCESS;
