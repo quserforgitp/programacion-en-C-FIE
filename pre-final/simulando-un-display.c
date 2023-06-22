@@ -15,6 +15,23 @@ void imprimirMatriz(char matriz[FILAS][COLUMNAS], int espOcupados)
 }
 
 void
+meterElCero ( char matrizCuadrada[FILAS][COLUMNAS],
+            int *espOcupados,
+            char caracter )
+{
+  for (size_t i = 0; i < FILAS; i++)
+    for (size_t j = (*espOcupados); j < (*espOcupados) + 4; j++)
+    {
+      if (i == 0 || i == 4) matrizCuadrada[i][j] = caracter;// 1,5 fila
+      else// 2,3,4 fila
+        if (j == (*espOcupados) || j == (*espOcupados) + 2) matrizCuadrada[i][j] = caracter; // 1,3 columna
+         else matrizCuadrada[i][j] = ' '; // 2,4 columna
+      if (j == (*espOcupados) + 3) matrizCuadrada[i][j] = ' ';
+    }
+  (*espOcupados) += 4;
+}
+
+void
 meterElUno( char matrizCuadrada[FILAS][COLUMNAS],
             int *espOcupados,
             char caracter )
@@ -118,19 +135,23 @@ main ()
          else matrizCuadrada[i][j] = ' '; // 2,4 columna
       if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
     }
-  espOcupados += 4;
+  //espOcupados += 4;  
 
-  /* METE 0 */
-  for (size_t i = 0; i < FILAS; i++)
-    for (size_t j = espOcupados; j < espOcupados + 4; j++)
-    {
-      if (i == 0 || i == 4) matrizCuadrada[i][j] = '0';// 1,5 fila
-      else// 2,3,4 fila
-        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '0'; // 1,3 columna
-         else matrizCuadrada[i][j] = ' '; // 2,4 columna
-      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
-    }
-  espOcupados += 4;
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
+  meterElUno ( matrizCuadrada,&espOcupados,'#' );
+  meterElSiete ( matrizCuadrada,&espOcupados,'#' );
+  meterElOcho ( matrizCuadrada,&espOcupados,'#' );
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
+  meterElUno ( matrizCuadrada,&espOcupados,'#' );
+  meterElSiete ( matrizCuadrada,&espOcupados,'#' );
+  meterElOcho ( matrizCuadrada,&espOcupados,'#' );
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
+  meterElUno ( matrizCuadrada,&espOcupados,'#' );
+  meterElSiete ( matrizCuadrada,&espOcupados,'#' );
+  meterElOcho ( matrizCuadrada,&espOcupados,'#' );
+  meterElCero ( matrizCuadrada,&espOcupados,'#' );
 
   imprimirMatriz( matrizCuadrada,espOcupados );
   
