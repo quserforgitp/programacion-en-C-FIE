@@ -80,6 +80,8 @@ meterElOcho ( char matrizCuadrada[FILAS][COLUMNAS],
     (*espOcupados) += 4;
 }
 
+void 
+
 void
 pedirCaracter ( char *caracter )
 {
@@ -103,16 +105,27 @@ main ()
   {
     for (size_t j = 0; j < 4; j++)
     {
-      matrizCuadrada[i][j] = '8';
+      matrizCuadrada[i][j] = '0';
     }
   }
+  espOcupados += 4;
 
-
-  meterElOcho(matrizCuadrada,&espOcupados,'#');
-  meterElOcho(matrizCuadrada,&espOcupados,'+');
-  meterElOcho(matrizCuadrada,&espOcupados,'=');
-  meterElOcho(matrizCuadrada,&espOcupados,'@');
-  meterElOcho(matrizCuadrada,&espOcupados,'%');
+  /* OTRO 0 */
+  for (size_t i = 0; i < FILAS; i++)
+  {
+    for (size_t j = espOcupados; j < espOcupados + 4; j++)
+    {
+      if (i == 0 || i == 4) // 1,5 fila
+      {
+        matrizCuadrada[i][j] = '0';
+      } else {// 2,3,4 fila
+        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '0'; // 1,3 columna
+         else matrizCuadrada[i][j] = ' ';
+      } 
+      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
+    }
+  }
+  espOcupados += 4;
 
   imprimirMatriz( matrizCuadrada,espOcupados );
   
