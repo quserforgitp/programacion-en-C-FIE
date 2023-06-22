@@ -123,78 +123,39 @@ main ()
       matrizCuadrada[i][j] = '0';
     }
   }
-  espOcupados += 4;
+  //espOcupados += 4;
 
-  /* METE 2 */
+  /* 2 GENERALIZADO */
   for (size_t i = 0; i < FILAS; i++)
-  {
-    for (size_t j = 0; j < 4; j++)
+    for (size_t j =  espOcupados; j < espOcupados + 4; j++)
     {
-      if (i%2 == 0) //1,3,5 filas
-      {
-        matrizCuadrada[i][j] = '2';
-      } else {// 2,4 filas
+      if (i%2 == 0) matrizCuadrada[i][j] = '2';//1,3,5 filas
+       else // 2,4 filas
         if (i == 1) // fila 2
-        {
-          if (j == 2)// columna 3
-          {
-            matrizCuadrada[i][j] = '2';
-          } else {// 1,2,4 columnas
-            matrizCuadrada[i][j] = ' ';
-          }
-          
-        } else {// fila 4
-          if (j == 0)// columna 1
-          {
-            matrizCuadrada[i][j] = '2';
-          } else {// 2,3,4 columnas
-            matrizCuadrada[i][j] = ' ';
-          }
-        }
-      }
-      if (j == 3)// columna 4 (siempre)
-      {
-        matrizCuadrada[i][j] = ' ';
-      }
-    }
+          if (j == espOcupados + 2) matrizCuadrada[i][j] = '2';// columna 3
+           else matrizCuadrada[i][j] = ' ';// 1,2,4 columnas
+        else // fila 4
+          if (j == espOcupados) matrizCuadrada[i][j] = '2';// columna 1
+           else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
+      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';// columna 4 (siempre)
   }
   espOcupados += 4;
 
-  /* OTRO 2 */
+  /* OTRO 2 GENERALIZADO */
   for (size_t i = 0; i < FILAS; i++)
-  {
-    for (size_t j = 0; j < 4; j++)
+    for (size_t j =  espOcupados; j < espOcupados + 4; j++)
     {
-      if (i%2 == 0) //1,3,5 filas
-      {
-        matrizCuadrada[i][j] = '2';
-      } else {// 2,4 filas
+      if (i%2 == 0) matrizCuadrada[i][j] = '2';//1,3,5 filas
+       else // 2,4 filas
         if (i == 1) // fila 2
-        {
-          if (j == 2)// columna 3
-          {
-            matrizCuadrada[i][j] = '2';
-          } else {// 1,2,4 columnas
-            matrizCuadrada[i][j] = ' ';
-          }
-          
-        } else {// fila 4
-          if (j == 0)// columna 1
-          {
-            matrizCuadrada[i][j] = '2';
-          } else {// 2,3,4 columnas
-            matrizCuadrada[i][j] = ' ';
-          }
-        }
-      }
-      if (j == 3)// columna 4 (siempre)
-      {
-        matrizCuadrada[i][j] = ' ';
-      }
-    }
+          if (j == espOcupados + 2) matrizCuadrada[i][j] = '2';// columna 3
+           else matrizCuadrada[i][j] = ' ';// 1,2,4 columnas
+        else // fila 4
+          if (j == espOcupados) matrizCuadrada[i][j] = '2';// columna 1
+           else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
+      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';// columna 4 (siempre)
   }
   espOcupados += 4;
-
 
   imprimirMatriz( matrizCuadrada,espOcupados );
   
