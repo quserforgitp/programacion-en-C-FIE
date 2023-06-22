@@ -54,7 +54,7 @@ meterElSiete( char matrizCuadrada[FILAS][COLUMNAS],
         matrizCuadrada[i][j] = ' '; // rellena con espacios
         if (j == rango - 2) // cuando estamos en la penultima columna
         {
-          matrizCuadrada[i][j] = caracter; // pon un 7
+          matrizCuadrada[i][j] = caracter;// pon el caracter
         }
       }
     }
@@ -80,18 +80,44 @@ main ()
   meterElUno(matrizCuadrada,&espOcupados,caracter);  
   imprimirMatriz(matrizCuadrada, espOcupados); */
 
-  
+  /* DEBUG */
+  for (size_t i = 0; i < FILAS; i++)
+  {
+    for (size_t j = 0; j < 4; j++)
+    {
+      matrizCuadrada[i][j] = '8';
+    }
+  }
 
-  int rango = 0;
-  rango = espOcupados + 4;
-  meterElSiete( matrizCuadrada,&espOcupados, '#');
-  meterElSiete( matrizCuadrada,&espOcupados, '#');
-  meterElUno( matrizCuadrada, &espOcupados, '#');
-       
-  espOcupados += 4; 
-  rango = espOcupados + 4; // esto se declara dentro de la funcion
+  /* METEMOS 8 */
+  for (size_t i = 0; i < FILAS; i++)
+    for (size_t j = espOcupados; j < espOcupados + 4; j++)
+    {
+      if (i%2 == 0) matrizCuadrada[i][j] = '8';
+      else 
+      {
+        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '8';
+        else matrizCuadrada[i][j] = ' ';
+      }
+      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
+    }
+    espOcupados += 4;  espOcupados += 4;
+
+    /* OTRO 8 */
+  for (size_t i = 0; i < FILAS; i++)
+    for (size_t j = espOcupados; j < espOcupados + 4; j++)
+    {
+      if (i%2 == 0) matrizCuadrada[i][j] = '8';
+      else
+      {
+        if (j == espOcupados || j == espOcupados + 2) matrizCuadrada[i][j] = '8';
+        else matrizCuadrada[i][j] = ' ';
+      }
+      if (j == espOcupados + 3) matrizCuadrada[i][j] = ' ';
+    }
+    espOcupados += 4;
+  
   imprimirMatriz( matrizCuadrada,espOcupados );
   
-
   return EXIT_SUCCESS;
 }
