@@ -76,8 +76,8 @@ meterElTres ( char matrizCuadrada[FILAS][COLUMNAS],
       if (i%2 == 0) matrizCuadrada[i][j] = caracter;//1,3,5 filas
        else // 2,4 filas
         if (i == 1) // fila 2
-          if (j == (*espOcupados)) matrizCuadrada[i][j] = caracter;// columna 1
-           else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
+          if (j == (*espOcupados) + 2) matrizCuadrada[i][j] = caracter;// columna 3
+           else matrizCuadrada[i][j] = ' ';// 1,2,4 columnas
         else // fila 4
           if (j == (*espOcupados + 2)) matrizCuadrada[i][j] = caracter;// columna 3
            else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
@@ -90,7 +90,20 @@ void
 meterElCinco ( char matrizCuadrada[FILAS][COLUMNAS],
             int *espOcupados, char caracter )
 {
-  
+  for (size_t i = 0; i < FILAS; i++)
+    for (size_t j =  (*espOcupados); j < (*espOcupados) + 4; j++)
+    {
+      if (i%2 == 0) matrizCuadrada[i][j] = caracter;//1,3,5 filas
+       else // 2,4 filas
+        if (i == 1) // fila 2
+          if (j == (*espOcupados)) matrizCuadrada[i][j] = caracter;// columna 3
+           else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
+        else // fila 4
+          if (j == (*espOcupados + 2)) matrizCuadrada[i][j] = caracter;// columna 3
+           else matrizCuadrada[i][j] = ' ';// 2,3,4 columnas
+      if (j == (*espOcupados) + 3) matrizCuadrada[i][j] = ' ';// columna 4 (siempre)
+  }
+  (*espOcupados) += 4;
 }
 
 void
@@ -199,8 +212,8 @@ main ()
   meterElCero ( matrizCuadrada, &espOcupados, '#' );
   meterElUno ( matrizCuadrada, &espOcupados, '#' );
   meterElDos ( matrizCuadrada, &espOcupados, '#' );
-  meterElTres ( matrizCuadrada, &espOcupados, '#' );
-  meterElCinco ( matrizCuadrada, &espOcupados, '#');
+  meterElTres ( matrizCuadrada, &espOcupados, '3' );
+  meterElCinco ( matrizCuadrada, &espOcupados, '5');
   meterElSiete ( matrizCuadrada, &espOcupados, '#' );
   meterElOcho ( matrizCuadrada, &espOcupados, '#' );
   meterElNueve ( matrizCuadrada, &espOcupados, '#' );
