@@ -266,16 +266,16 @@ void
 meterTodos ( char matrizCuadrada[FILAS][COLUMNAS], int *espOcupados, 
 char caracter )
 {
-  meterElCero ( matrizCuadrada ,espOcupados,'#' );
-  meterElUno ( matrizCuadrada ,espOcupados,'#' );
-  meterElDos ( matrizCuadrada ,espOcupados,'#' );
-  meterElTres ( matrizCuadrada ,espOcupados,'#' );
-  meterElCuatro ( matrizCuadrada,espOcupados,'#' );
-  meterElCinco ( matrizCuadrada,espOcupados,'#' );
-  meterElSeis ( matrizCuadrada ,espOcupados,'#' );
-  meterElSiete ( matrizCuadrada ,espOcupados,'#' );
-  meterElOcho ( matrizCuadrada ,espOcupados,'#' );
-  meterElNueve ( matrizCuadrada ,espOcupados,'#' );
+  meterElCero ( matrizCuadrada ,espOcupados,caracter );
+  meterElUno ( matrizCuadrada ,espOcupados,caracter );
+  meterElDos ( matrizCuadrada ,espOcupados,caracter );
+  meterElTres ( matrizCuadrada ,espOcupados,caracter );
+  meterElCuatro ( matrizCuadrada,espOcupados,caracter );
+  meterElCinco ( matrizCuadrada,espOcupados,caracter );
+  meterElSeis ( matrizCuadrada ,espOcupados,caracter );
+  meterElSiete ( matrizCuadrada ,espOcupados,caracter );
+  meterElOcho ( matrizCuadrada ,espOcupados,caracter );
+  meterElNueve ( matrizCuadrada ,espOcupados,caracter );
 }
 
 /* DRIVER */
@@ -300,6 +300,7 @@ main ()
   //espOcupados += 4;
 
   meterTodos ( matrizCuadrada, &espOcupados,'#' );
+  meterTodos ( matrizCuadrada, &espOcupados, '%' );
 
   
   
