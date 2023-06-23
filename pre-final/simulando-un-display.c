@@ -87,6 +87,54 @@ meterElTres ( char matrizCuadrada[FILAS][COLUMNAS],
 }
 
 void
+meterElCuatro ( char matrizCuadrada[FILAS][COLUMNAS],
+            int *espOcupados, char caracter )
+{
+  
+  // for del 4
+  for (size_t i = 0; i < FILAS; i++)
+  {
+    for (size_t j = (*espOcupados); j < (*espOcupados) + 4; j++)
+    {
+      if (i == 0 || i == 1)// 1,2 filas
+      {
+        if (j == (*espOcupados) || j == (*espOcupados) + 2)// 1,3 columnas
+        {
+          matrizCuadrada[i][j] = caracter;
+        } else
+          {
+            matrizCuadrada[i][j] = ' ';
+          }        
+      }
+      else // filas 3,4,5
+      {
+        if (i == 2) // fila 3
+        {
+          matrizCuadrada[i][j] = caracter;
+        }
+        else// 4,5 filas
+        {
+          if (j == (*espOcupados) + 2) // 3er columna
+          {
+            matrizCuadrada[i][j] = caracter;
+          }
+          else// 1,2,4 columnas
+          {
+            matrizCuadrada[i][j] = ' ';
+          }
+        }
+      }
+    if (j == (*espOcupados) + 3)// siempre 4ta columna
+    {
+      matrizCuadrada[i][j] = ' ';
+    }
+    }
+  }
+
+  (*espOcupados) += 4;
+}
+
+void
 meterElCinco ( char matrizCuadrada[FILAS][COLUMNAS],
             int *espOcupados, char caracter )
 {
@@ -214,6 +262,22 @@ pedirCaracter ( char *caracter )
   puts("");
 }
 
+void
+meterTodos ( char matrizCuadrada[FILAS][COLUMNAS], int *espOcupados, 
+char caracter )
+{
+  meterElCero ( matrizCuadrada ,espOcupados,'#' );
+  meterElUno ( matrizCuadrada ,espOcupados,'#' );
+  meterElDos ( matrizCuadrada ,espOcupados,'#' );
+  meterElTres ( matrizCuadrada ,espOcupados,'#' );
+  meterElCuatro ( matrizCuadrada,espOcupados,'#' );
+  meterElCinco ( matrizCuadrada,espOcupados,'#' );
+  meterElSeis ( matrizCuadrada ,espOcupados,'#' );
+  meterElSiete ( matrizCuadrada ,espOcupados,'#' );
+  meterElOcho ( matrizCuadrada ,espOcupados,'#' );
+  meterElNueve ( matrizCuadrada ,espOcupados,'#' );
+}
+
 /* DRIVER */
 int
 main ()
@@ -235,16 +299,10 @@ main ()
   }
   //espOcupados += 4;
 
-  meterElCero ( matrizCuadrada, &espOcupados, '#' );
-  meterElUno ( matrizCuadrada, &espOcupados, '#' );
-  meterElDos ( matrizCuadrada, &espOcupados, '#' );
-  meterElTres ( matrizCuadrada, &espOcupados, '#' );
-  meterElCinco ( matrizCuadrada, &espOcupados, '#' );
-  meterElSeis ( matrizCuadrada, &espOcupados, '#' );
-  meterElSiete ( matrizCuadrada, &espOcupados, '#' );
-  meterElOcho ( matrizCuadrada, &espOcupados, '#' );
-  meterElNueve ( matrizCuadrada, &espOcupados, '#' );
+  meterTodos ( matrizCuadrada, &espOcupados,'#' );
 
+  
+  
   imprimirMatriz( matrizCuadrada,espOcupados );
   
   return EXIT_SUCCESS;
