@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FILAS 5
-#define COLUMNAS 100
+#define FILAS 5 // display
+#define COLUMNAS 100 // display
 #define SALTAR_LINEA putchar ( '\n' ) ;
 #define CONSUMIR_ENTER getchar () ;
 
@@ -259,13 +259,6 @@ meterElNueve ( char matrizDisplay[FILAS][COLUMNAS],
 }
 
 void
-pedirCaracter ( char *caracter )
-{
-  scanf("%c", caracter);
-  puts("");
-}
-
-void
 meterTodos ( char matrizDisplay[FILAS][COLUMNAS], int *espOcupados, 
 char caracter )
 {
@@ -285,10 +278,10 @@ char caracter )
 int
 main ()
 {
-  char matrizDisplay[FILAS][COLUMNAS] = {0};
-  int espOcupados = 0;
-  char caracter = 0;
-  char numeros[20] = {0};
+  char matrizDisplay[FILAS][COLUMNAS] = {0};// la que realmente simula un display 2d de 7 segmentos
+  int espOcupados = 0;// evita que se sobreescriba el patron en la matrizDispay
+  char caracter = 0;// el caracter que se usara para dibujar el patron en la matrizDisplay
+  char numeros[20] = {0};// numeros y orden en el cual aparecen los numeros en matrizDisplay
 
   /* ENTRADA ej -> 1234 #*/
   scanf("%s", numeros); CONSUMIR_ENTER
