@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define FILAS 5
 #define COLUMNAS 100
+#define SALTAR_LINEA putchar ( '\n' ) ;
+#define CONSUMIR_ENTER getchar () ;
 
 void imprimirMatriz(char matriz[FILAS][COLUMNAS], int espOcupados)
 {
@@ -283,28 +286,60 @@ int
 main ()
 {
   char matrizCuadrada[FILAS][COLUMNAS] = {0};
+  char matrizNumeros[10] = {0};
   int espOcupados = 0;
   char caracter = 0;
-  /* pedirCaracter( &caracter );
-  meterElUno(matrizCuadrada,&espOcupados,caracter);  
-  imprimirMatriz(matrizCuadrada, espOcupados); */
+  char numeros[20] = {0};
 
-  /* DEBUG */
-  for (size_t i = 0; i < FILAS; i++)
-  {
-    for (size_t j = 0; j < 4; j++)
-    {
-      matrizCuadrada[i][j] = '0';
-    }
-  }
-  //espOcupados += 4;
+  /* ENTRADA ej -> 1234 #*/
+  scanf("%s", numeros); CONSUMIR_ENTER
+  scanf("%c", &caracter); CONSUMIR_ENTER
 
-  meterTodos ( matrizCuadrada, &espOcupados,'#' );
-  meterTodos ( matrizCuadrada, &espOcupados, '%' );
+  /* PROCESAMIENTO DE DATOS */
+  // recorre la matriz de numeros
+  for (int i = 0; i < strlen(numeros); i++)
+   switch ( numeros[i] ) // mete en el display el numero que encuentre
+   {
+   case '0':
+      meterElCero( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '1':
+      meterElUno( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '2':
+      meterElDos( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '3':
+      meterElTres( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '4':
+      meterElCuatro( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '5':
+      meterElCinco( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '6':
+      meterElSeis( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '7':
+      meterElSiete( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '8':
+      meterElOcho( matrizCuadrada,&espOcupados,caracter );
+    break;
+    case '9':
+      meterElNueve( matrizCuadrada,&espOcupados,caracter );
+    break;
+   
+   default:
+      fprintf( stderr," '%c' no es un numero\n",numeros[i] );
+      return EXIT_FAILURE;
+    break;
+   }
 
-  
-  
-  imprimirMatriz( matrizCuadrada,espOcupados );
+
+  /* SALIDA */
+  SALTAR_LINEA ; imprimirMatriz( matrizCuadrada,espOcupados );
   
   return EXIT_SUCCESS;
 }
